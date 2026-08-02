@@ -1,0 +1,42 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/kaneo.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: kaneo
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: kaneo
+    target: service
+    service: kaneo
+    source: ghcr.io/usekaneo/kaneo
+    channel: stable
+    delivery:
+      mode: mirror
+      image_template: ghcr.1ms.run/usekaneo/kaneo:{tag}
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+    skip_if_version_exists: false
+    retry:
+      enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Kaneo
+    summary: Published from GitHub Actions
