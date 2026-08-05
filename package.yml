@@ -1,16 +1,14 @@
 package: community.lazycat.app.kaneo
-version: 2.12.1
+version: 2.12.2
 name: Kaneo
 description: A focused, self-hosted project management platform for teams.
 min_os_version: 1.5.0
 author: usekaneo
 license: MIT
 homepage: https://github.com/usekaneo/kaneo
-
 permissions:
   required:
     - net.internet
-
 locales:
   zh:
     name: Kaneo
